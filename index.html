@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cornelia Manda | Portfolio | Portfolio Page</title>
-    <!-- Made by: Cornelia Manda, December 10th, 2025 for GBDA228--> 
-  
+    <title>Cornelia Manda | Portfolio | Portfolio Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-    <!-- again, for my homepage claude to give me the href for the google font's playfair display & roboto, as it wasn't working when I linked it not sure why, so i used what claude gave me here as well--> 
 
     <style>
-        /* the global reset & typography choices */
+        /* Global Reset & Typography */
         * {
             box-sizing: border-box;
         }
@@ -30,7 +27,7 @@
             font-family: "Playfair Display", serif;
         }
 
-        /* main layout container, 1200px & centered */
+        /* Main layout container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -39,16 +36,17 @@
             min-height: 100vh;
         }
 
-        /* navigation syst */
+        /* Navigation System */
         header {
             display: grid;
-            grid-template-columns: 50% 50%;
+            grid-template-columns: 30% 70%;
             align-items: center;
             background-color: #DDBDBE;
             padding: 17px 60px;
+            position: relative;
+            z-index: 1000;
         }
         
-        /* again preferably a logo, but i haven't settled on one yet, the idea will come to me eventually */
         .logo {
             font-family: "Playfair Display", serif;
             font-size: 1.5em;
@@ -66,6 +64,8 @@
         nav li {
             display: inline-block;
             margin-left: 40px;
+            position: relative;
+            vertical-align: middle;
         }
 
         nav a {
@@ -73,17 +73,57 @@
             color: #655C5B;
             font-size: 1.1em;
             transition: color 0.3s ease;
+            display: inline-block;
+            padding: 10px 0;
         }
 
         nav a:hover {
             color: white;
         }
 
+        /* Highlights 'Portfolio' as the active page */
         nav li:nth-child(2) a {
             color: white; 
         }
 
-        /* page title style */
+        /* Dropdown Menu Styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #DDBDBE; 
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            z-index: 100;
+            text-align: left;
+            padding: 10px 0;
+            top: 100%; 
+            left: 0;
+            margin-top: -5px;
+        }
+
+        .dropdown-content li {
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown-content a {
+            color: #655C5B !important; 
+            padding: 12px 20px;
+            display: block;
+            font-size: 0.95em;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #E0E2DF;
+            color: #816B6E !important;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Page title style */
         .page-title {
             text-align: center;
             color: #816B6E;
@@ -94,40 +134,7 @@
             font-weight: 700;
         }
 
-        /* resume button style */
-        .button-container {
-            text-align: center; 
-            margin-top: 25px;
-            margin-bottom: 60px;
-        }
-
-        /* call to action buttonn*/
-        .cta-button {
-            display: inline-block;
-            padding: 15px 50px; 
-            font-size: 1.5em; 
-            
-            background-color: #C99B9B; 
-            color: white;              
-            border: 2px solid #C99B9B; 
-            
-            text-decoration: none;
-            text-transform: capitalize; 
-            
-            font-family: "Playfair Display", serif;
-            font-weight: bold;
-            transition: all 0.4s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #816B6E; 
-            border-color: #816B6E;     
-            color: #fff;
-            transform: rotate(-2deg);
-            cursor: pointer;
-        }
-
-        /* portfolio pieces grid layout */
+        /* Portfolio pieces grid */
         #portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -157,19 +164,15 @@
             transition: transform 0.5s ease;
         }
 
-        /* overlay label and text style */
+        /* Overlay Styles */
         .overlay-label {
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            
             position: absolute;
             bottom: 0;
             left: 0;
-            
             width: 100%;
-            
-            /* rgba for translucent background, all overlay label was heavily researched as it was a little of a pain and required a lot of research to figure out */
             background-color: rgba(101, 92, 91, 0.85); 
             padding: 50px 0; 
             z-index: 10;
@@ -193,19 +196,16 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             white-space: nowrap;
-            
             position: absolute;
             left: 10px; 
             top: 40%; 
-            
             line-height: 1; 
             margin: 0;
-            
             transform-origin: bottom left ;
             transform: rotate(90deg) translateX(-50%); 
         }
 
-        /* more interactivity */
+        /* Grid Hover Interactivity */
         .grid-item:hover img {
             transform: scale(1.05);
         }
@@ -217,7 +217,36 @@
             transform-origin: center;
         }
 
-        /* footer */
+        /* Button Container */
+        .button-container {
+            text-align: center; 
+            margin-top: 25px;
+            margin-bottom: 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 50px; 
+            font-size: 1.5em; 
+            background-color: #C99B9B; 
+            color: white;              
+            border: 2px solid #C99B9B; 
+            text-decoration: none;
+            text-transform: capitalize; 
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            transition: all 0.4s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #816B6E; 
+            border-color: #816B6E;      
+            color: #fff;
+            transform: rotate(-2deg);
+            cursor: pointer;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px;
@@ -227,7 +256,6 @@
             border-top: 1px solid #DDBDBE; 
         }
 
-        /* footer with the table layout as asn instructions said */
         .footer-table-wrapper {
             display: flex; 
             justify-content: center;
@@ -287,8 +315,19 @@
             <div class="logo">Cornelia Manda</div>
             <nav>
                 <ul>
-                  <li><a href="https://cornelia-manda.github.io/cornelia.manda/">Home</a></li>
+                    <li><a href="https://cornelia-manda.github.io/home/">Home</a></li>
                     <li><a href="https://cornelia-manda.github.io/portfolio/">Portfolio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Projects</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#">Videography</a></li>
+                            <li><a href="#">Branding</a></li>
+                            <li><a href="#">Web and App</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="https://cornelia-manda.github.io/contact-aboutme/">Contact</a></li>
                 </ul>
             </nav>
@@ -299,49 +338,43 @@
         <main id="portfolio-grid">
 
             <div class="grid-item">
-                   <!-- <a href="">not added yet -->
-                    <img src="waterloo-logo.jpeg" alt="University of Waterloo Logo">
-                    <div class="overlay-label">
-                        <h2>University of Waterloo</h2>
-                        <p>2024 - Present</p>
-                    </div>
-                   <!-- </a> -->
+                <img src="waterloo-logo.jpeg" alt="University of Waterloo Logo">
+                <div class="overlay-label">
+                    <h2>University of Waterloo</h2>
+                    <p>2024 - Present</p>
+                </div>
             </div>
 
             <div class="grid-item">
                 <a href="https://cornelia-manda.github.io/asn3-manda_cornelia-shortfilms/">
                     <img src="shortfilm.jpeg" alt="Newspaper clipping about film festival">
                     <div class="overlay-label">
-                      <h2>Short Films</h2>
+                        <h2>Short Films</h2>
                         <p>2022 - 2025</p>
                     </div>
                 </a>
             </div>
 
             <div class="grid-item">
-               <!-- <a href=""> not added yet -->
-                    <img src="photography.jpg" alt="Cornelia holding a camera">
-                    <div class="overlay-label">
-                        <h2>Photography</h2>
-                        <p>Present</p>
-                    </div>
-                <!-- </a> -->
+                <img src="photography.jpg" alt="Cornelia holding a camera">
+                <div class="overlay-label">
+                    <h2>Photography</h2>
+                    <p>Present</p>
+                </div>
             </div>
 
             <div class="grid-item">
-            <!-- <a href="">  not added yet -->
-                    <img src="senate.jpg" alt="Two students standing in front of St. Mary's crest">
-                    <div class="overlay-label">
-                        <h2>Senate Representative</h2>
-                        <p>2023 - 2024</p>
-                    </div>
-                 <!--   </a> -->
+                <img src="senate.jpg" alt="Two students standing in front of St. Mary's crest">
+                <div class="overlay-label">
+                    <h2>Senate Representative</h2>
+                    <p>2023 - 2024</p>
+                </div>
             </div>
 
         </main>
 
         <div class="button-container">
-            <a href="https://cornelia-manda.github.io/a3-manda_cornelia_resume/" class="cta-button">View Resume</a>
+            <a href="https://cornelia-manda.github.io/a3-manda_cornelia_resume/" class="cta-button">Open Resume</a>
         </div>
 
         <footer>
