@@ -28,7 +28,7 @@
             font-family: "Playfair Display", serif;
         }
 
-        /* --- Link Reset: Prevents default blue/purple colors --- */
+        /* --- Link Reset --- */
         a, a:visited, a:active {
             text-decoration: none;
             color: inherit;
@@ -44,7 +44,7 @@
             min-height: 100vh;
         }
 
-        /* Navigation System matching current pages.pdf */
+        /* Navigation Area */
         header {
             display: grid;
             grid-template-columns: 30% 70%;
@@ -88,7 +88,7 @@
             cursor: pointer;
         }
 
-        /* FIX: Highlights 'Portfolio' as active page while preventing dropdown conflict */
+        /* Highlights 'Portfolio' as active page */
         nav > ul > li:nth-child(2) > a {
             color: white !important; 
         }
@@ -113,7 +113,6 @@
             margin: 0;
         }
 
-        /* FIX: Dropdown links now use Playfair Display and correct dark color */
         .dropdown-content a, .dropdown-content a:visited {
             color: #655C5B !important; 
             padding: 12px 20px;
@@ -236,7 +235,7 @@
             padding: 15px 50px; 
             font-size: 1.5em; 
             background-color: #C99B9B; 
-            color: white !important;              
+            color: white !important;               
             border: 2px solid #C99B9B; 
             text-decoration: none;
             text-transform: capitalize; 
@@ -317,10 +316,10 @@
                     <li><a href="https://cornelia-manda.github.io/portfolio/">Portfolio</a></li>
                     
                     <li class="dropdown">
-                        <a href="#">Projects</a>
+                        <a href="https://cornelia-manda.github.io/projects/">Projects</a>
                         <ul class="dropdown-content">
-                            <li><a href="#">Videography</a></li>
-                            <li><a href="#">Branding</a></li>
+                            <li><a href="https://cornelia-manda.github.io/videography/">Videography</a></li>
+                            <li><a href="https://cornelia-manda.github.io/branding/">Branding</a></li>
                             <li><a href="#">Web and App</a></li>
                             <li><a href="#">Graphic Design</a></li>
                         </ul>
