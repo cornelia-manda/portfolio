@@ -23,7 +23,6 @@
             background-color: #E0E2DF;
         }
 
-        /* Standard fonts for all headings and links */
         h1, h2, h3, a, th {
             font-family: "Playfair Display", serif;
         }
@@ -35,7 +34,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Main layout container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -88,7 +86,6 @@
             cursor: pointer;
         }
 
-        /* Highlights 'Portfolio' as active page */
         nav > ul > li:nth-child(2) > a {
             color: white !important; 
         }
@@ -108,12 +105,8 @@
             margin-top: -5px;
         }
 
-        .dropdown-content li {
-            display: block;
-            margin: 0;
-        }
-
-        .dropdown-content a, .dropdown-content a:visited {
+        .dropdown-content li { display: block; margin: 0; }
+        .dropdown-content a {
             color: #655C5B !important; 
             padding: 12px 20px;
             display: block;
@@ -126,11 +119,8 @@
             color: #816B6E !important;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        /* Page title style */
         .page-title {
             text-align: center;
             color: #816B6E;
@@ -141,7 +131,7 @@
             font-weight: 700;
         }
 
-        /* Portfolio pieces grid */
+        /* Portfolio Grid */
         #portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -156,12 +146,6 @@
             background-color: #fff;
         }
         
-        .grid-item a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
         .grid-item img {
             width: 100%;
             height: 100%;
@@ -192,6 +176,7 @@
             letter-spacing: 1px;
             line-height: 1.1;
             text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .overlay-label p {
@@ -211,19 +196,39 @@
             transform: rotate(90deg) translateX(-50%); 
         }
 
-        /* Grid Hover Interactivity */
-        .grid-item:hover img {
+        /* Coming Soon Styling */
+        .coming-soon-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #C99B9B;
+            color: white;
+            padding: 8px 20px;
+            font-size: 0.85em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 5px;
+            z-index: 30;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            font-family: "Roboto", sans-serif;
+        }
+
+        /* Disabled state for non-clickable items */
+        .grid-item.disabled { cursor: default; }
+        .grid-item.disabled img { filter: grayscale(40%); opacity: 0.7; }
+
+        /* Grid Hover Interactivity (only for active items) */
+        .grid-item:not(.disabled):hover img {
             transform: scale(1.05);
         }
 
-        .grid-item:hover .overlay-label h2 {
+        .grid-item:not(.disabled):hover .overlay-label h2 {
             transform: rotate(-2deg);
-            transition: transform 0.3s ease;
             color: #DDBDBE;
             transform-origin: center;
         }
 
-        /* Button Container */
         .button-container {
             text-align: center; 
             margin-top: 25px;
@@ -235,10 +240,8 @@
             padding: 15px 50px; 
             font-size: 1.5em; 
             background-color: #C99B9B; 
-            color: white !important;               
+            color: white !important;                
             border: 2px solid #C99B9B; 
-            text-decoration: none;
-            text-transform: capitalize; 
             font-family: "Playfair Display", serif;
             font-weight: bold;
             transition: all 0.4s ease;
@@ -249,10 +252,8 @@
             border-color: #816B6E;      
             color: #fff !important;
             transform: rotate(-2deg);
-            cursor: pointer;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px;
@@ -262,69 +263,32 @@
             border-top: 1px solid #DDBDBE; 
         }
 
-        .footer-table-wrapper {
-            display: flex; 
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .footer-table {
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        .footer-table th {
-            color: #816B6E;
-            font-size: 1.1em;
-            padding: 5px 10px 5px 0;
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-
-        .footer-table th:not(:first-child) {
-            padding-left: 30px; 
-        }
-
-        .footer-table td {
-            padding: 5px 0;
-            font-family: "Roboto", sans-serif;
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-
-        .footer-table a:hover {
-            color: #816B6E !important;
-        }
-
-        .copyright {
-            margin-top: 20px;
-            opacity: 0.8;
-            font-size: 0.8em;
-        }
+        .footer-table-wrapper { display: flex; justify-content: center; margin-bottom: 20px; }
+        .footer-table { border-collapse: collapse; text-align: left; }
+        .footer-table th { color: #816B6E; font-size: 1.1em; padding: 5px 10px 5px 0; vertical-align: middle; white-space: nowrap; }
+        .footer-table th:not(:first-child) { padding-left: 30px; }
+        .footer-table td { padding: 5px 0; font-family: "Roboto", sans-serif; vertical-align: middle; white-space: nowrap; }
 
     </style>
 </head>
 <body>
 
     <div class="container">
-        
         <header>
             <div class="logo">Cornelia Manda</div>
             <nav>
                 <ul>
                     <li><a href="https://cornelia-manda.github.io/home/">Home</a></li>
                     <li><a href="https://cornelia-manda.github.io/portfolio/">Portfolio</a></li>
-                    
                     <li class="dropdown">
                         <a href="https://cornelia-manda.github.io/projects/">Projects</a>
                         <ul class="dropdown-content">
                             <li><a href="https://cornelia-manda.github.io/videography/">Videography</a></li>
                             <li><a href="https://cornelia-manda.github.io/branding/">Branding</a></li>
-                            <li><a href="#">Web and App</a></li>
+                            <li><a href="https://cornelia-manda.github.io/web-app/">Web and App</a></li>
                             <li><a href="#">Graphic Design</a></li>
                         </ul>
                     </li>
-
                     <li><a href="https://cornelia-manda.github.io/contact-aboutme/">Contact</a></li>
                 </ul>
             </nav>
@@ -333,7 +297,6 @@
         <h1 class="page-title">PORTFOLIO</h1>
 
         <main id="portfolio-grid">
-
             <div class="grid-item">
                 <a href="https://cornelia-manda.github.io/projects/">
                     <img src="waterloo-logo.jpeg" alt="University of Waterloo Logo">
@@ -354,7 +317,8 @@
                 </a>
             </div>
 
-            <div class="grid-item">
+            <div class="grid-item disabled">
+                <div class="coming-soon-tag">Coming Soon</div>
                 <img src="photography.jpg" alt="Cornelia holding a camera">
                 <div class="overlay-label">
                     <h2>Photography</h2>
@@ -362,14 +326,14 @@
                 </div>
             </div>
 
-            <div class="grid-item">
+            <div class="grid-item disabled">
+                <div class="coming-soon-tag">Coming Soon</div>
                 <img src="senate.jpg" alt="Two students standing in front of St. Mary's crest">
                 <div class="overlay-label">
                     <h2>Senate Representative</h2>
                     <p>2023 - 2024</p>
                 </div>
             </div>
-
         </main>
 
         <div class="button-container">
@@ -382,20 +346,15 @@
                     <tr>
                         <th>Email:</th>
                         <td><a href="mailto:cmanda@uwaterloo.ca">cmanda@uwaterloo.ca</a></td>
-                        
                         <th>School:</th>
                         <td><a href="https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/global-business-and-digital-arts" target="_blank">University of Waterloo</a></td>
-                        
                         <th>Location:</th>
                         <td>Kitchener-Waterloo, Ontario</td>
                     </tr>
                 </table>
             </div>
-
             <p class="copyright">&copy; 2026 Cornelia Manda. All Rights Reserved.</p>
         </footer>
-
     </div>
-
 </body>
 </html>
